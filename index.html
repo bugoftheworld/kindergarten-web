@@ -9,201 +9,197 @@
             box-sizing: border-box;
         }
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans TC", sans-serif;
+            background: #f5f7fa;
             min-height: 100vh;
             margin: 0;
             padding: 20px;
+            color: #333;
         }
         .container {
-            max-width: 900px;
+            max-width: 800px;
             margin: 0 auto;
             background: white;
-            border-radius: 16px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            border-radius: 20px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
             overflow: hidden;
         }
         .header {
-            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-            color: white;
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
             padding: 30px;
             text-align: center;
         }
         .header h1 {
-            margin: 0 0 10px 0;
-            font-size: 28px;
+            margin: 0 0 8px 0;
+            font-size: 24px;
+            color: #2c3e50;
         }
         .header p {
             margin: 0;
-            opacity: 0.9;
+            color: #666;
+            font-size: 14px;
         }
         .filters {
-            padding: 25px;
-            background: #f8f9fa;
+            padding: 20px 25px;
+            background: #fafbfc;
             border-bottom: 1px solid #eee;
         }
         .filter-row {
             display: flex;
             flex-wrap: wrap;
-            gap: 15px;
-            margin-bottom: 15px;
+            gap: 12px;
         }
         .filter-group {
             flex: 1;
-            min-width: 200px;
+            min-width: 150px;
         }
         .filter-group label {
             display: block;
+            font-size: 13px;
             font-weight: 600;
-            margin-bottom: 8px;
-            color: #333;
+            margin-bottom: 6px;
+            color: #555;
         }
-        .filter-group select, .filter-group input {
+        .filter-group select {
             width: 100%;
-            padding: 10px 15px;
-            border: 2px solid #ddd;
-            border-radius: 8px;
+            padding: 10px 14px;
+            border: 1px solid #e0e0e0;
+            border-radius: 10px;
             font-size: 14px;
-            transition: border-color 0.3s;
+            background: white;
+            color: #333;
+            cursor: pointer;
+            transition: all 0.2s;
         }
-        .filter-group select:focus, .filter-group input:focus {
+        .filter-group select:hover {
+            border-color: #a8edea;
+        }
+        .filter-group select:focus {
             outline: none;
-            border-color: #4facfe;
+            border-color: #5ebdbd;
+            box-shadow: 0 0 0 3px rgba(168, 237, 234, 0.3);
         }
         .results {
             padding: 20px;
         }
         .results-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
+            margin-bottom: 16px;
+            font-size: 14px;
+            color: #888;
         }
-        .results-count {
-            font-size: 16px;
-            color: #666;
-        }
-        .results-count strong {
-            color: #4facfe;
-            font-size: 20px;
+        .results-header strong {
+            color: #5ebdbd;
         }
         .kindergarten-card {
             background: white;
-            border: 1px solid #e8e8e8;
-            border-radius: 12px;
-            padding: 20px;
-            margin-bottom: 15px;
-            transition: all 0.3s;
-            border-left: 4px solid #4facfe;
+            border: 1px solid #eee;
+            border-radius: 16px;
+            padding: 18px;
+            margin-bottom: 12px;
+            transition: all 0.2s;
+            border-left: 4px solid #a8edea;
         }
         .kindergarten-card:hover {
             transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.06);
         }
         .kindergarten-card.top {
-            border-left-color: #ffd700;
-            background: linear-gradient(135deg, #fffbf0 0%, #fff8e7 100%);
+            border-left-color: #5ebdbd;
+            background: #fafffb;
         }
         .card-header {
             display: flex;
             justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 12px;
+            align-items: center;
+            margin-bottom: 10px;
         }
         .card-title {
-            font-size: 18px;
-            font-weight: 700;
+            font-size: 16px;
+            font-weight: 600;
             color: #333;
-            margin: 0;
         }
         .card-badge {
-            display: inline-block;
-            padding: 4px 12px;
+            padding: 4px 10px;
             border-radius: 20px;
-            font-size: 12px;
-            font-weight: 600;
+            font-size: 11px;
+            font-weight: 500;
         }
         .badge-public {
-            background: #e3f2fd;
-            color: #1976d2;
+            background: #e8f4f8;
+            color: #3498db;
         }
         .badge-nonprofit {
-            background: #f3e5f5;
-            color: #7b1fa2;
+            background: #f5eef8;
+            color: #9b59b6;
         }
         .card-distance {
-            font-size: 24px;
+            font-size: 20px;
             font-weight: 700;
-            color: #4facfe;
+            color: #5ebdbd;
+            margin: 10px 0;
         }
         .card-distance small {
-            font-size: 14px;
-            color: #666;
+            font-size: 13px;
+            color: #999;
             font-weight: normal;
         }
         .card-info {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 10px;
-            margin: 15px 0;
+            font-size: 13px;
+            color: #666;
+            margin: 8px 0;
         }
-        .info-item {
-            font-size: 14px;
-            color: #555;
-        }
-        .info-item strong {
-            color: #333;
+        .card-info strong {
+            color: #444;
         }
         .convenience-tags {
             display: flex;
             flex-wrap: wrap;
-            gap: 8px;
-            margin-top: 12px;
+            gap: 6px;
+            margin-top: 10px;
         }
         .tag {
-            display: inline-block;
-            padding: 5px 12px;
-            border-radius: 15px;
-            font-size: 12px;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 11px;
             font-weight: 500;
         }
         .tag-excellent {
-            background: #c8e6c9;
-            color: #2e7d32;
+            background: #e8f5e9;
+            color: #27ae60;
         }
         .tag-good {
-            background: #bbdefb;
-            color: #1565c0;
+            background: #e3f2fd;
+            color: #2980b9;
         }
         .tag-warning {
-            background: #ffecb3;
-            color: #f57c00;
+            background: #fff8e1;
+            color: #f39c12;
         }
         .rank-badge {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            width: 32px;
-            height: 32px;
+            width: 24px;
+            height: 24px;
             border-radius: 50%;
-            background: #ffd700;
-            color: #333;
-            font-weight: bold;
-            font-size: 14px;
-            margin-right: 10px;
+            background: #a8edea;
+            color: #2c3e50;
+            font-weight: 600;
+            font-size: 12px;
+            margin-right: 8px;
         }
         .no-results {
             text-align: center;
             padding: 40px;
-            color: #999;
+            color: #aaa;
         }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="header">
-            <h1>🎓 三峽區幼兒園篩選</h1>
-            <p>📍 起點：青鳥之森（橫溪路99巷64號）</p>
+            <h1>🎓 三峽區幼兒園</h1>
+            <p>📍 青鳥之森（橫溪路99巷64號）</p>
         </div>
         
         <div class="filters">
@@ -229,8 +225,8 @@
                     <label>✨ 接送便利度</label>
                     <select id="filterConvenience">
                         <option value="all">不限</option>
-                        <option value="excellent">✅✅ 極佳</option>
-                        <option value="good">✅ 良好</option>
+                        <option value="excellent">極佳</option>
+                        <option value="good">良好</option>
                     </select>
                 </div>
             </div>
@@ -238,7 +234,7 @@
         
         <div class="results">
             <div class="results-header">
-                <span class="results-count">共找到 <strong id="resultCount">0</strong> 間</span>
+                共找到 <strong id="resultCount">0</strong> 間
             </div>
             <div id="results"></div>
         </div>
@@ -246,25 +242,25 @@
 
     <script>
         const data = [
-            { rank: 1, name: "市立三峽幼兒園本園", address: "溪東路218巷1號2樓", time: 4, type: "公立", convenience: "warning", tags: ["⚠️ 巷內臨停"], age: "3-5歲" },
-            { rank: 2, name: "市立三峽幼兒園中興分班", address: "介壽路二段136巷63號", time: 4, type: "公立", convenience: "warning", tags: ["⚠️ 巷內臨停"], age: "3-5歲" },
-            { rank: 3, name: "市立三峽幼兒園龍埔分班", address: "三樹路214巷9號", time: 4, type: "公立", convenience: "warning", tags: ["⚠️ 巷內臨停"], age: "3-5歲" },
-            { rank: 4, name: "龍埔成長非營利幼兒園", address: "大學路6號", time: 9, type: "非營利", convenience: "excellent", tags: ["✅✅ 室外2000坪", "有專屬接送區"], age: "2-5歲", people: 90 },
-            { rank: 5, name: "安溪非營利幼兒園", address: "中華路42號", time: 6, type: "非營利", convenience: "warning", tags: ["⚠️ 空間較小"], age: "2-5歲", people: 136 },
-            { rank: 6, name: "介壽國小附設幼兒園", address: "大同路1號", time: 6, type: "公立", convenience: "good", tags: ["✅ 國小校內", "空間大"], age: "2-5歲", people: 212 },
-            { rank: 7, name: "中園非營利幼兒園", address: "弘園街22號", time: 6, type: "非營利", convenience: "good", tags: ["✅ 室外470坪"], age: "2-5歲", people: 136 },
-            { rank: 8, name: "建安國小附設幼兒園", address: "建安路67號", time: 7, type: "公立", convenience: "good", tags: ["✅ 國小校內", "空間大"], age: "3-5歲", people: 30 },
-            { rank: 9, name: "安溪國中附設幼兒園", address: "溪安街181號", time: 8, type: "公立", convenience: "good", tags: ["✅ 國中校內", "空間大"], age: "2-5歲", people: 166 },
-            { rank: 10, name: "國教院員工子女非營利幼兒園", address: "三樹路2號", time: 7, type: "非營利", convenience: "warning", tags: ["⚠️ 空間適中"], age: "2-5歲", people: 75 },
-            { rank: 11, name: "北大非營利幼兒園", address: "國光街100號", time: 8, type: "非營利", convenience: "good", tags: ["✅ 室外1100坪"], age: "2-5歲", people: 182 },
-            { rank: 12, name: "三峽國中附設幼兒園", address: "復興路238號", time: 9, type: "公立", convenience: "good", tags: ["✅ 國中校內", "空間大"], age: "2-5歲", people: 76 },
-            { rank: 13, name: "三峽國小附設幼兒園", address: "中山路16號", time: 10, type: "公立", convenience: "good", tags: ["✅ 國小校內", "空間大"], age: "3-5歲", people: 180 },
-            { rank: 14, name: "民義國小附設幼兒園", address: "白雞路40號", time: 10, type: "公立", convenience: "warning", tags: ["⚠️ 偏鄉"], age: "3-5歲", people: 30 },
-            { rank: 15, name: "大埔國小附設幼兒園", address: "大埔路130號", time: 12, type: "公立", convenience: "warning", tags: ["⚠️ 偏鄉"], age: "3-5歲", people: 60 },
-            { rank: 16, name: "漢翔非營利幼兒園", address: "大學路218號", time: 9, type: "非營利", convenience: "warning", tags: ["⚠️ 室外僅125坪"], age: "2-5歲", people: 76 },
-            { rank: 17, name: "插角森林實驗小學附設幼兒園", address: "插角39號", time: 18, type: "公立", convenience: "warning", tags: ["⚠️ 偏鄉"], age: "3-5歲", people: 30 },
-            { rank: 18, name: "五寮國小附設幼兒園", address: "五寮里69號", time: 22, type: "公立", convenience: "warning", tags: ["⚠️ 偏鄉"], age: "3-5歲", people: 30 },
-            { rank: 19, name: "有木國小附設幼兒園", address: "有木里131號", time: 28, type: "公立", convenience: "warning", tags: ["⚠️ 偏鄉"], age: "3-5歲", people: 30 }
+            { rank: 1, name: "市立三峽幼兒園本園", address: "溪東路218巷1號2樓", time: 4, type: "公立", convenience: "warning", tags: ["巷內臨停"], age: "3-5歲" },
+            { rank: 2, name: "市立三峽幼兒園中興分班", address: "介壽路二段136巷63號", time: 4, type: "公立", convenience: "warning", tags: ["巷內臨停"], age: "3-5歲" },
+            { rank: 3, name: "市立三峽幼兒園龍埔分班", address: "三樹路214巷9號", time: 4, type: "公立", convenience: "warning", tags: ["巷內臨停"], age: "3-5歲" },
+            { rank: 4, name: "龍埔成長非營利幼兒園", address: "大學路6號", time: 9, type: "非營利", convenience: "excellent", tags: ["室外2000坪", "有接送區"], age: "2-5歲", people: 90 },
+            { rank: 5, name: "介壽國小附設幼兒園", address: "大同路1號", time: 7, type: "公立", convenience: "good", tags: ["國小校內", "空間大"], age: "2-5歲", people: 212 },
+            { rank: 6, name: "安溪非營利幼兒園", address: "中華路42號", time: 7, type: "非營利", convenience: "warning", tags: ["空間較小"], age: "2-5歲", people: 136 },
+            { rank: 7, name: "中園非營利幼兒園", address: "弘園街22號", time: 8, type: "非營利", convenience: "good", tags: ["室外470坪"], age: "2-5歲", people: 136 },
+            { rank: 8, name: "建安國小附設幼兒園", address: "建安路67號", time: 8, type: "公立", convenience: "good", tags: ["國小校內", "空間大"], age: "3-5歲", people: 30 },
+            { rank: 9, name: "安溪國中附設幼兒園", address: "溪安街181號", time: 9, type: "公立", convenience: "good", tags: ["國中校內", "空間大"], age: "2-5歲", people: 166 },
+            { rank: 10, name: "國教院員工子女非營利幼兒園", address: "三樹路2號", time: 8, type: "非營利", convenience: "warning", tags: ["空間適中"], age: "2-5歲", people: 75 },
+            { rank: 11, name: "北大非營利幼兒園", address: "國光街100號", time: 9, type: "非營利", convenience: "good", tags: ["室外1100坪"], age: "2-5歲", people: 182 },
+            { rank: 12, name: "三峽國中附設幼兒園", address: "復興路238號", time: 10, type: "公立", convenience: "good", tags: ["國中校內", "空間大"], age: "2-5歲", people: 76 },
+            { rank: 13, name: "三峽國小附設幼兒園", address: "中山路16號", time: 11, type: "公立", convenience: "good", tags: ["國小校內", "空間大"], age: "3-5歲", people: 180 },
+            { rank: 14, name: "民義國小附設幼兒園", address: "白雞路40號", time: 11, type: "公立", convenience: "warning", tags: ["偏鄉"], age: "3-5歲", people: 30 },
+            { rank: 15, name: "大埔國小附設幼兒園", address: "大埔路130號", time: 14, type: "公立", convenience: "warning", tags: ["偏鄉"], age: "3-5歲", people: 60 },
+            { rank: 16, name: "漢翔非營利幼兒園", address: "大學路218號", time: 10, type: "非營利", convenience: "warning", tags: ["室外僅125坪"], age: "2-5歲", people: 76 },
+            { rank: 17, name: "插角森林實驗小學附設幼兒園", address: "插角39號", time: 20, type: "公立", convenience: "warning", tags: ["偏鄉"], age: "3-5歲", people: 30 },
+            { rank: 18, name: "五寮國小附設幼兒園", address: "五寮里69號", time: 25, type: "公立", convenience: "warning", tags: ["偏鄉"], age: "3-5歲", people: 30 },
+            { rank: 19, name: "有木國小附設幼兒園", address: "有木里131號", time: 30, type: "公立", convenience: "warning", tags: ["偏鄉"], age: "3-5歲", people: 30 }
         ];
 
         function render() {
@@ -298,9 +294,8 @@
                     </div>
                     <div class="card-distance">🚗 ${item.time} 分鐘 <small>(開車)</small></div>
                     <div class="card-info">
-                        <div class="info-item">📍 <strong>地址：</strong>${item.address}</div>
-                        <div class="info-item">👶 <strong>招收：</strong>${item.age}</div>
-                        ${item.people ? `<div class="info-item">👥 <strong>名額：</strong>${item.people}人</div>` : ''}
+                        📍 ${item.address} &nbsp;|&nbsp; 👶 ${item.age}
+                        ${item.people ? `&nbsp;|&nbsp; 👥 ${item.people}人` : ''}
                     </div>
                     <div class="convenience-tags">
                         ${item.tags.map(tag => `<span class="tag tag-${item.convenience}">${tag}</span>`).join('')}
