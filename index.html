@@ -1,1 +1,319 @@
-<!DOCTYPE html><html><head><title>Test</title></head><body>Hello</body></html>
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>三峽區幼兒園篩選</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+        .header {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        .header h1 {
+            margin: 0 0 10px 0;
+            font-size: 28px;
+        }
+        .header p {
+            margin: 0;
+            opacity: 0.9;
+        }
+        .filters {
+            padding: 25px;
+            background: #f8f9fa;
+            border-bottom: 1px solid #eee;
+        }
+        .filter-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+        .filter-group {
+            flex: 1;
+            min-width: 200px;
+        }
+        .filter-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #333;
+        }
+        .filter-group select, .filter-group input {
+            width: 100%;
+            padding: 10px 15px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 14px;
+            transition: border-color 0.3s;
+        }
+        .filter-group select:focus, .filter-group input:focus {
+            outline: none;
+            border-color: #4facfe;
+        }
+        .results {
+            padding: 20px;
+        }
+        .results-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .results-count {
+            font-size: 16px;
+            color: #666;
+        }
+        .results-count strong {
+            color: #4facfe;
+            font-size: 20px;
+        }
+        .kindergarten-card {
+            background: white;
+            border: 1px solid #e8e8e8;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 15px;
+            transition: all 0.3s;
+            border-left: 4px solid #4facfe;
+        }
+        .kindergarten-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+        .kindergarten-card.top {
+            border-left-color: #ffd700;
+            background: linear-gradient(135deg, #fffbf0 0%, #fff8e7 100%);
+        }
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 12px;
+        }
+        .card-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #333;
+            margin: 0;
+        }
+        .card-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        .badge-public {
+            background: #e3f2fd;
+            color: #1976d2;
+        }
+        .badge-nonprofit {
+            background: #f3e5f5;
+            color: #7b1fa2;
+        }
+        .card-distance {
+            font-size: 24px;
+            font-weight: 700;
+            color: #4facfe;
+        }
+        .card-distance small {
+            font-size: 14px;
+            color: #666;
+            font-weight: normal;
+        }
+        .card-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 10px;
+            margin: 15px 0;
+        }
+        .info-item {
+            font-size: 14px;
+            color: #555;
+        }
+        .info-item strong {
+            color: #333;
+        }
+        .convenience-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 12px;
+        }
+        .tag {
+            display: inline-block;
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        .tag-excellent {
+            background: #c8e6c9;
+            color: #2e7d32;
+        }
+        .tag-good {
+            background: #bbdefb;
+            color: #1565c0;
+        }
+        .tag-warning {
+            background: #ffecb3;
+            color: #f57c00;
+        }
+        .rank-badge {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: #ffd700;
+            color: #333;
+            font-weight: bold;
+            font-size: 14px;
+            margin-right: 10px;
+        }
+        .no-results {
+            text-align: center;
+            padding: 40px;
+            color: #999;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🎓 三峽區幼兒園篩選</h1>
+            <p>📍 起點：青鳥之森（橫溪路99巷64號）</p>
+        </div>
+        
+        <div class="filters">
+            <div class="filter-row">
+                <div class="filter-group">
+                    <label>🚗 開車時間</label>
+                    <select id="filterTime">
+                        <option value="all">不限</option>
+                        <option value="5">5分鐘以內</option>
+                        <option value="10">10分鐘以內</option>
+                        <option value="15">15分鐘以內</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label>🏫 類型</label>
+                    <select id="filterType">
+                        <option value="all">不限</option>
+                        <option value="公立">公立</option>
+                        <option value="非營利">非營利</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label>✨ 接送便利度</label>
+                    <select id="filterConvenience">
+                        <option value="all">不限</option>
+                        <option value="excellent">✅✅ 極佳</option>
+                        <option value="good">✅ 良好</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        
+        <div class="results">
+            <div class="results-header">
+                <span class="results-count">共找到 <strong id="resultCount">0</strong> 間</span>
+            </div>
+            <div id="results"></div>
+        </div>
+    </div>
+
+    <script>
+        const data = [
+            { rank: 1, name: "市立三峽幼兒園本園", address: "溪東路218巷1號2樓", time: 4, type: "公立", convenience: "warning", tags: ["⚠️ 巷內臨停"], age: "3-5歲" },
+            { rank: 2, name: "市立三峽幼兒園中興分班", address: "介壽路二段136巷63號", time: 4, type: "公立", convenience: "warning", tags: ["⚠️ 巷內臨停"], age: "3-5歲" },
+            { rank: 3, name: "市立三峽幼兒園龍埔分班", address: "三樹路214巷9號", time: 4, type: "公立", convenience: "warning", tags: ["⚠️ 巷內臨停"], age: "3-5歲" },
+            { rank: 4, name: "龍埔成長非營利幼兒園", address: "大學路6號", time: 5, type: "非營利", convenience: "excellent", tags: ["✅✅ 室外2000坪", "有專屬接送區"], age: "2-5歲", people: 90 },
+            { rank: 5, name: "安溪非營利幼兒園", address: "中華路42號", time: 6, type: "非營利", convenience: "warning", tags: ["⚠️ 空間較小"], age: "2-5歲", people: 136 },
+            { rank: 6, name: "介壽國小附設幼兒園", address: "大同路1號", time: 6, type: "公立", convenience: "good", tags: ["✅ 國小校內", "空間大"], age: "2-5歲", people: 212 },
+            { rank: 7, name: "中園非營利幼兒園", address: "弘園街22號", time: 6, type: "非營利", convenience: "good", tags: ["✅ 室外470坪"], age: "2-5歲", people: 136 },
+            { rank: 8, name: "建安國小附設幼兒園", address: "建安路67號", time: 7, type: "公立", convenience: "good", tags: ["✅ 國小校內", "空間大"], age: "3-5歲", people: 30 },
+            { rank: 9, name: "安溪國中附設幼兒園", address: "溪安街181號", time: 8, type: "公立", convenience: "good", tags: ["✅ 國中校內", "空間大"], age: "2-5歲", people: 166 },
+            { rank: 10, name: "國教院員工子女非營利幼兒園", address: "三樹路2號", time: 7, type: "非營利", convenience: "warning", tags: ["⚠️ 空間適中"], age: "2-5歲", people: 75 },
+            { rank: 11, name: "北大非營利幼兒園", address: "國光街100號", time: 8, type: "非營利", convenience: "good", tags: ["✅ 室外1100坪"], age: "2-5歲", people: 182 },
+            { rank: 12, name: "三峽國中附設幼兒園", address: "復興路238號", time: 9, type: "公立", convenience: "good", tags: ["✅ 國中校內", "空間大"], age: "2-5歲", people: 76 },
+            { rank: 13, name: "三峽國小附設幼兒園", address: "中山路16號", time: 10, type: "公立", convenience: "good", tags: ["✅ 國小校內", "空間大"], age: "3-5歲", people: 180 },
+            { rank: 14, name: "民義國小附設幼兒園", address: "白雞路40號", time: 10, type: "公立", convenience: "warning", tags: ["⚠️ 偏鄉"], age: "3-5歲", people: 30 },
+            { rank: 15, name: "大埔國小附設幼兒園", address: "大埔路130號", time: 12, type: "公立", convenience: "warning", tags: ["⚠️ 偏鄉"], age: "3-5歲", people: 60 },
+            { rank: 16, name: "漢翔非營利幼兒園", address: "大學路218號", time: 9, type: "非營利", convenience: "warning", tags: ["⚠️ 室外僅125坪"], age: "2-5歲", people: 76 },
+            { rank: 17, name: "插角森林實驗小學附設幼兒園", address: "插角39號", time: 18, type: "公立", convenience: "warning", tags: ["⚠️ 偏鄉"], age: "3-5歲", people: 30 },
+            { rank: 18, name: "五寮國小附設幼兒園", address: "五寮里69號", time: 22, type: "公立", convenience: "warning", tags: ["⚠️ 偏鄉"], age: "3-5歲", people: 30 },
+            { rank: 19, name: "有木國小附設幼兒園", address: "有木里131號", time: 28, type: "公立", convenience: "warning", tags: ["⚠️ 偏鄉"], age: "3-5歲", people: 30 }
+        ];
+
+        function render() {
+            const timeFilter = document.getElementById('filterTime').value;
+            const typeFilter = document.getElementById('filterType').value;
+            const convenienceFilter = document.getElementById('filterConvenience').value;
+            
+            let filtered = data.filter(item => {
+                if (timeFilter !== 'all' && item.time > parseInt(timeFilter)) return false;
+                if (typeFilter !== 'all' && item.type !== typeFilter) return false;
+                if (convenienceFilter !== 'all' && item.convenience !== convenienceFilter) return false;
+                return true;
+            });
+
+            document.getElementById('resultCount').textContent = filtered.length;
+            
+            const results = document.getElementById('results');
+            if (filtered.length === 0) {
+                results.innerHTML = '<div class="no-results">沒有找到符合條件的幼兒園</div>';
+                return;
+            }
+
+            results.innerHTML = filtered.map(item => `
+                <div class="kindergarten-card ${item.rank <= 5 ? 'top' : ''}">
+                    <div class="card-header">
+                        <div>
+                            <span class="rank-badge">${item.rank}</span>
+                            <span class="card-title">${item.name}</span>
+                        </div>
+                        <span class="card-badge badge-${item.type === '公立' ? 'public' : 'nonprofit'}">${item.type}</span>
+                    </div>
+                    <div class="card-distance">🚗 ${item.time} 分鐘 <small>(開車)</small></div>
+                    <div class="card-info">
+                        <div class="info-item">📍 <strong>地址：</strong>${item.address}</div>
+                        <div class="info-item">👶 <strong>招收：</strong>${item.age}</div>
+                        ${item.people ? `<div class="info-item">👥 <strong>名額：</strong>${item.people}人</div>` : ''}
+                    </div>
+                    <div class="convenience-tags">
+                        ${item.tags.map(tag => `<span class="tag tag-${item.convenience}">${tag}</span>`).join('')}
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        document.querySelectorAll('select').forEach(select => {
+            select.addEventListener('change', render);
+        });
+
+        render();
+    </script>
+</body>
+</html>
