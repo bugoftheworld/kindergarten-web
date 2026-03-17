@@ -103,6 +103,11 @@
             transform: translateY(-2px);
             box-shadow: 0 6px 20px rgba(0,0,0,0.06);
         }
+        .kindergarten-card a {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
         .kindergarten-card.top {
             border-left-color: #5ebdbd;
             background: #fafffb;
@@ -285,6 +290,7 @@
 
             results.innerHTML = filtered.map(item => `
                 <div class="kindergarten-card ${item.rank <= 5 ? 'top' : ''}">
+                    <a href="https://www.google.com/maps/dir/%E9%9B%84%E6%BA%90%E8%B7%AF99%E5%B7%98%E4%B9%9D%E5%8F%B2%E8%99%8F/${encodeURIComponent(item.address)}" target="_blank" class="card-link">
                     <div class="card-header">
                         <div>
                             <span class="rank-badge">${item.rank}</span>
@@ -300,6 +306,7 @@
                     <div class="convenience-tags">
                         ${item.tags.map(tag => `<span class="tag tag-${item.convenience}">${tag}</span>`).join('')}
                     </div>
+                    </a>
                 </div>
             `).join('');
         }
